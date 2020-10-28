@@ -293,4 +293,8 @@ button {
 .card-title {
   font-weight: bold;
 }
+
+.menu-link {
+    text-decoration: none;
+}
 /*# sourceMappingURL=style.css.map */
