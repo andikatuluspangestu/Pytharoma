@@ -1,0 +1,266 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+// Base
+$color-white: #ffffff;
+$color-black: #252a32;
+$color-light: #f1f5f8;
+$color-red: #d32f2f;
+$color-blue: #4d585c;
+$color-primary: #2f4f4f;
+$box-shadow: 0 1px 3px rgba(0,
+0,
+0,
+0.12),
+0 1px 3px rgba(0,
+0,
+0,
+0.24);
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: $color-black;
+    background: $color-white;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+a,
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    text-decoration: none;
+}
+
+// Elements
+.container {
+    max-width: 90rem;
+    width: 100%;
+    height: auto;
+    padding: 0 2rem;
+    margin: 0 auto;
+}
+
+.open-menu,
+.close-menu {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    color: $color-black;
+    background: none;
+}
+
+.close-menu {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    border: none;
+    outline: none;
+    color: $color-black;
+    background: none;
+}
+
+.title-large {
+    font-family: inherit;
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: inherit;
+    color: $color-black;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+// Header
+.header {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 0.75rem 1.5rem;
+    color: $color-black;
+    background: $color-light;
+    box-shadow: $box-shadow;
+    .navbarku {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-items: center;
+        top: 0;
+        .menu-wrapper {
+            &::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: -1;
+                transition: background 0.5s;
+            }
+            &.offcanvas {
+                .menu {
+                    transform: translate3d(0, 0, 0);
+                    transition-duration: 0.7s;
+                    transition-delay: 0.2s;
+                }
+                &::before {
+                    background: rgba($color-black, 0.6);
+                    z-index: 1;
+                }
+            }
+        }
+        .menu {
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            max-width: 20rem;
+            width: 100%;
+            padding: 1.5rem 1rem;
+            z-index: 2;
+            overflow-y: auto;
+            color: $color-black;
+            background: $color-white;
+            box-shadow: $box-shadow;
+            transform: translate3d(-100%, 0, 0);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            &-block {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 3rem;
+            }
+            &-link {
+                font-family: inherit;
+                font-size: 1rem;
+                font-weight: 600;
+                line-height: inherit;
+                text-transform: uppercase;
+                transition: color 0.35s ease-out;
+                &:hover {
+                    color: $color-red;
+                }
+            }
+            &-item {
+                position: relative;
+                a {
+                    font-family: inherit;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    line-height: inherit;
+                    text-transform: uppercase;
+                    padding: 0.5rem 1rem;
+                    display: block;
+                    color: $color-black;
+                    transition: color 0.35s ease-out;
+                    &:hover {
+                        color: $color-red;
+                    }
+                }
+                &.has-collapsible {
+                    position: relative;
+                    .menu-child {
+                        display: none;
+                        .menu-child-item {
+                            a {
+                                font-family: inherit;
+                                font-size: 1rem;
+                                font-weight: 600;
+                                line-height: inherit;
+                                padding: 0.25rem;
+                                color: $color-black;
+                                padding-left: 2.5rem;
+                                text-transform: uppercase;
+                                transition: color 0.35s ease-out;
+                                &:hover {
+                                    color: $color-red;
+                                }
+                            }
+                        }
+                    }
+                    span::after {
+                        font-family: "Material Icons";
+                        content: "\e5cc";
+                        font-size: 1.5rem;
+                        font-weight: 400;
+                        line-height: inherit;
+                        position: absolute;
+                        top: 0.15rem;
+                        right: 1rem;
+                        color: $color-black;
+                        transition: all 0.35s ease;
+                        &:hover {
+                            color: $color-red;
+                        }
+                    }
+                }
+                &.active {
+                    &.has-collapsible {
+                        .menu-child {
+                            display: block;
+                            transition: all 0.35s ease;
+                        }
+                        span::after {
+                            transform: rotate(90deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Main
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 2rem 0;
+}
+
+// Card
+.cardkita {
+    background-color: rgb(231, 236, 241);
+    border-radius: 5px;
+    color: black;
+}
+
+.shadow {
+    border: none;
+}
+
+.card-header {
+    border: none;
+}
+
+.card-title {
+    font-weight: bold;
+}
