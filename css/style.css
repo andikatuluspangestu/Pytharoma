@@ -294,7 +294,11 @@ button {
   font-weight: bold;
 }
 
+.menu-item a {
+  text-decoration: none;
+}
+
 .menu-link {
-    text-decoration: none;
+  text-decoration: none;
 }
 /*# sourceMappingURL=style.css.map */
